@@ -1,15 +1,17 @@
-import { useState } from 'react';
 import './App.css';
+import Navbar from './components/Navbar';
+import Marquee from './pages/landing/components/Marquee';
+import HeroSection from './pages/landing/components/HeroSection';
 
 function App() {
-    const [count, setCount] = useState(0);
-
     return (
-        <div className="min-h-screen flex items-start justify-center bg-background w-screen text-text">
-            <div>
-                Hello world
-            </div>
-        </div>
+        <>
+            <Navbar />
+            <main className="pt-24">
+                <HeroSection />
+                <Marquee />
+            </main>
+        </>
     );
 }
 
