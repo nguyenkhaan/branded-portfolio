@@ -7,7 +7,7 @@ import WorkSection from './components/WorkSection';
 
 export default function LandingPage() {
     return (
-        <div className="overflow-x-hidden w-full space-y-40 my-40">
+        <div className="my-24 w-full space-y-24 overflow-x-hidden sm:my-32 sm:space-y-32 lg:my-40 lg:space-y-40">
             <VisualSection />
             <WorkSection /> 
             <TechSection /> 

@@ -1,4 +1,4 @@
 
 export const customerStyling = {
-    sectionWrapper: "mx-auto max-w-7xl w-full"
-}
+    sectionWrapper: 'mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8',
+};

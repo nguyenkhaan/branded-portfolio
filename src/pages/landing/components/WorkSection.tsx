@@ -1,5 +1,5 @@
 import type { PointerEvent } from 'react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
     AnimatePresence,
     motion,
@@ -26,6 +26,7 @@ export default function WorkSection() {
     const prefersReducedMotion = useReducedMotion();
     const [activeWork, setActiveWork] = useState<WorkEntry | null>(null);
     const [activeIndex, setActiveIndex] = useState<number | null>(null);
+    const [isDesktopPreview, setIsDesktopPreview] = useState(false);
 
     const pointerX = useMotionValue(0);
     const pointerY = useMotionValue(0);
@@ -39,6 +40,20 @@ export default function WorkSection() {
         damping: prefersReducedMotion ? 50 : 28,
         mass: 0.45,
     });
+
+    useEffect(() => {
+        if (typeof window === 'undefined') {
+            return;
+        }
+
+        const mediaQuery = window.matchMedia('(min-width: 1024px)');
+        const syncDesktopMode = () => setIsDesktopPreview(mediaQuery.matches);
+
+        syncDesktopMode();
+        mediaQuery.addEventListener('change', syncDesktopMode);
+
+        return () => mediaQuery.removeEventListener('change', syncDesktopMode);
+    }, []);
 
     function updatePreviewPosition(clientX: number, clientY: number) {
         let nextX = clientX + previewOffset;
@@ -64,12 +79,20 @@ export default function WorkSection() {
         index: number,
         event: PointerEvent<HTMLAnchorElement>,
     ) {
+        if (!isDesktopPreview) {
+            return;
+        }
+
         setActiveIndex(index);
         setActiveWork(work);
         updatePreviewPosition(event.clientX, event.clientY);
     }
 
     function handlePreviewMove(event: PointerEvent<HTMLAnchorElement>) {
+        if (!isDesktopPreview) {
+            return;
+        }
+
         updatePreviewPosition(event.clientX, event.clientY);
     }
 
@@ -81,13 +104,13 @@ export default function WorkSection() {
     return (
         <Section
             header={
-                <div className="w-full flex items-center justify-between border-b border-b-border py-8">
+                <div className="flex w-full flex-col gap-4 border-b border-b-border py-6 sm:py-7 lg:flex-row lg:items-center lg:justify-between lg:py-8">
                     <SectionHeading>Selected Work</SectionHeading>
-                    <p className="flex gap-4 text-base tracking-wide font-space">
+                    <p className="flex flex-wrap items-center gap-3 text-sm tracking-wide font-space sm:text-base">
                         <span className="text-text-secondary">
                             [ 3 PROJECT ARCHIVED ]
                         </span>
-                        <span className="text-text font-semibold group">
+                        <span className="group inline-flex min-h-11 items-center text-text font-semibold">
                             VIEW FULL ARCHIVE
                             <AnimatedArrow className="inline ml-2 cursor-pointer" />
                         </span>
@@ -97,7 +120,7 @@ export default function WorkSection() {
         >
             <div className="relative">
                 <AnimatePresence>
-                    {activeWork && (
+                    {isDesktopPreview && activeWork && (
                         <motion.div
                             key={activeWork.name}
                             initial={{
@@ -122,7 +145,7 @@ export default function WorkSection() {
                             <img
                                 src={activeWork.image}
                                 alt={`${activeWork.name} preview`}
-                                className="h-[16.25rem] w-[26.25rem] rounded-lg object-cover object-top"
+                                className="h-[16.25rem] w-[26.25rem] object-cover object-top"
                             />
                         </motion.div>
                     )}
@@ -135,8 +158,9 @@ export default function WorkSection() {
                             name={work.name}
                             description={work.description}
                             year={work.year}
+                            img={work.image}
                             link={work.link}
-                            isActive={activeIndex === index}
+                            isActive={isDesktopPreview && activeIndex === index}
                             onPreviewEnter={(event) => handlePreviewEnter(work, index, event)}
                             onPreviewMove={handlePreviewMove}
                             onPreviewLeave={handlePreviewLeave}

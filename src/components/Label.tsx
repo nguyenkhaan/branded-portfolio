@@ -30,7 +30,7 @@ export default function NavbarLabel({
             onClick={onClick}
             whileHover={{ y: -0.5 }}
             transition={hoverTransition}
-            className="relative inline-flex items-center justify-center pr-2 text-base uppercase font-medium font-syne tracking-wide cursor-pointer"
+            className="relative inline-flex min-h-11 items-center justify-center px-1 pr-2 text-sm font-medium tracking-wide uppercase cursor-pointer font-syne sm:text-base"
         >
             {isSelected && (
                 <motion.span

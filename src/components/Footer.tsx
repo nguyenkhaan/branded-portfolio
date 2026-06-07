@@ -2,14 +2,14 @@ import { contacts } from '../bases/me.constant';
 
 export default function Footer() {
     return (
-        <div className="h-30 text-base font-space border-t uppercase text-text-secondary border-t-border w-full right-0 left-0">
-            <div className="max-w-7xl flex h-full items-center justify-between w-full mx-auto">
-                <span className="">© 2026 Make with Cloudian 💙 Cloud</span>
-                <ul className='ml-0 flex items-center gap-6'>
+        <footer className="w-full border-t border-t-border text-text-secondary">
+            <div className="mx-auto flex w-full max-w-7xl flex-col gap-5 px-4 py-6 text-sm font-space uppercase sm:px-6 sm:py-7 lg:flex-row lg:items-center lg:justify-between lg:px-8 lg:text-base">
+                <span className="leading-relaxed">© 2026 Make with Cloudian 💙 Cloud</span>
+                <ul className='ml-0 flex flex-wrap items-center gap-x-5 gap-y-3'>
                     {contacts.map((contact, index) => {
                         return (
-                            <a href = {contact.link} target='_blank'>
-                                <span className="uppercase hover:text-text duration-500 transition-all underline" key={index}>
+                            <a href = {contact.link} target='_blank' rel="noreferrer" key={index}>
+                                <span className="underline transition-all duration-500 lg:hover:text-text">
                                     {contact.name}
                                 </span>
                             </a>
@@ -17,6 +17,6 @@ export default function Footer() {
                     })}
                 </ul>
             </div>
-        </div>
+        </footer>
     );
 }

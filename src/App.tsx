@@ -7,15 +7,15 @@ import Footer from './components/Footer';
 
 function App() {
     return (
-        <>
+        <div className="overflow-x-clip">
             <Navbar />
-            <main className="pt-24">
+            <main className="pt-36 sm:pt-40 lg:pt-24">
                 <HeroSection />
                 <Marquee />
             </main>
             <LandingPage /> 
             <Footer /> 
-        </>
+        </div>
     );
 }
 

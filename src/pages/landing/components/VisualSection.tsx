@@ -14,28 +14,28 @@ export default function VisualSection() {
             header={
                 <div className="w-full">
                     <SectionHeading>Visuals</SectionHeading>
-                    <div className="flex items-center justify-between mt-2">
-                        <span className="text-text-secondary font-sans text-base font-normal tracking-normal">
+                    <div className="mt-3 flex flex-col gap-3 sm:mt-4 sm:gap-4 lg:flex-row lg:items-end lg:justify-between">
+                        <span className="max-w-2xl text-sm font-normal tracking-normal text-text-secondary font-sans sm:text-base">
                             Captured Moments & Digital Dreams — A collection of
                             aesthetic experiments.
                         </span>
-                        <span className="uppercase font-medium text-center text-text-secondary font-syne tracking-wider text-sm">
+                        <span className="font-syne text-xs font-medium tracking-[0.18em] text-text-secondary uppercase sm:text-sm lg:text-right">
                             Scroll to explore
                         </span>
                     </div>
                 </div>
             }
         >
-            <div className="flex mt-14 flex-wrap items-start justify-between">
-                <div className="w-[32%] gap-6 flex flex-col">
+            <div className="mt-10 grid grid-cols-1 gap-4 sm:mt-12 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6">
+                <div className="flex flex-col gap-4 sm:gap-5 lg:gap-6">
                     <VisualCard url={v1} />
                     <VisualCard url={v2} />
                 </div>
-                <div className="w-[32%] gap-6 flex flex-col">
+                <div className="flex flex-col gap-4 sm:gap-5 lg:gap-6">
                     <VisualCard url={v3} />
                     <VisualCard url={v4} />
                 </div>
-                <div className="w-[32%] gap-6 flex flex-col">
+                <div className="flex flex-col gap-4 sm:gap-5 lg:gap-6 sm:col-span-2 lg:col-span-1">
                     <VisualCard url={v5} />
                     <VisualCard url={v6} />
                 </div>

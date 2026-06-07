@@ -29,4 +29,15 @@ body,
 
 body {
   background: var(--color-background);
+  min-width: 320px;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a,
+button {
+  touch-action: manipulation;
 }

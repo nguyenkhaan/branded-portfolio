@@ -6,11 +6,11 @@ export default function Section({
 } : {header : ReactNode , children : ReactNode}) 
 {
     return (
-        <section className = {`${customerStyling.sectionWrapper} min-h-100`}>
+        <section className = {`${customerStyling.sectionWrapper} min-h-0 lg:min-h-100`}>
             <div className="w-full">
                 {header}
             </div> 
-            <div className="my-4">
+            <div className="mt-4 sm:mt-5 lg:mt-6">
                 {children}
             </div>
         </section>
