@@ -1,7 +1,8 @@
+import ContributionSection from './components/ContributionSection';
 import TechSection from './components/TechSection';
 import VisualSection from './components/VisualSection';
 import WorkSection from './components/WorkSection';
-import StackIcon from 'tech-stack-icons';
+
 
 export default function LandingPage() {
     return (
@@ -9,6 +10,7 @@ export default function LandingPage() {
             <VisualSection />
             <WorkSection /> 
             <TechSection /> 
+            <ContributionSection /> 
         </div>
     );
 }

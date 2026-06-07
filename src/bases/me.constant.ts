@@ -2,6 +2,7 @@
 import jobportal from '../assets/work/jobportal.jpeg';
 import rainyword from '../assets/work/rainywordcoder.png';
 import portfolio from '../assets/work/portfolio.png';
+
 export const works = [
     {
         name: 'My Job',
@@ -25,6 +26,7 @@ export const works = [
         link: 'http://localhost:3000',
     },
 ];
+
 export const technologies = [
     // Programming Languages
     {
@@ -100,3 +102,66 @@ export const technologies = [
         icon: 'colab',
     },
 ];
+
+export const openSourceSection = {
+    eyebrow: 'Open Source',
+    title: 'Building in Public',
+    githubLabel: 'View GitHub Profile',
+    githubUrl: 'https://github.com/',
+    featuredRepositoriesLabel: 'Featured Repositories',
+    stats: [
+        {
+            icon: 'repositories',
+            value: 10,
+            suffix: '+',
+            label: 'Repositories',
+        },
+        {
+            icon: 'stars',
+            value: 50,
+            suffix: '+',
+            label: 'Stars Earned',
+        },
+        {
+            icon: 'forks',
+            value: 15,
+            suffix: '+',
+            label: 'Forks',
+        },
+        {
+            icon: 'contributions',
+            value: 500,
+            suffix: '+',
+            label: 'Contributions',
+        },
+    ],
+    repositories: [
+        {
+            name: 'habitquest',
+            description:
+                'Gamified habit tracker with social squads, boss battles & achievements.',
+            stars: 25,
+            language: 'TypeScript',
+            languageColor: '#3b82f6',
+            url: 'https://github.com/',
+        },
+        {
+            name: 'emoji-kit',
+            description:
+                'Premium animated emoji library for React applications with smooth framer-motion interactions.',
+            stars: 15,
+            language: 'TypeScript',
+            languageColor: '#3b82f6',
+            url: 'https://github.com/',
+        },
+        {
+            name: 'insta-p8',
+            description:
+                'Open source platform architecture and modular implementation patterns.',
+            stars: 32,
+            language: 'TypeScript',
+            languageColor: '#3b82f6',
+            url: 'https://github.com/',
+        },
+    ],
+} as const;
