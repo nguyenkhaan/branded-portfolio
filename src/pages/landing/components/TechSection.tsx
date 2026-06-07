@@ -16,7 +16,7 @@ export default function TechSection() {
             <div className="mt-10 grid grid-cols-2 gap-3 sm:mt-12 sm:grid-cols-3 lg:grid-cols-4">
                 {
                     technologies.map((tech , index) => {
-                        return <TechItem name = {tech.name} icon = {tech.icon} key = {index} /> 
+                        return <TechItem name = {tech.name} icon = {tech.icon} delay={index * 0.1} key = {index} /> 
                     })
                 }
             </div>

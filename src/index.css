@@ -41,3 +41,8 @@ a,
 button {
   touch-action: manipulation;
 }
+
+html.has-dust-cursor,
+html.has-dust-cursor * {
+  cursor: none !important;
+}

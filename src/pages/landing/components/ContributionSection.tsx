@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import {
     ArrowUpRight,
     Code2,
@@ -9,13 +9,17 @@ import {
 } from 'lucide-react';
 
 import { openSourceSection } from '../../../bases/me.constant';
+import { luxuryEase, luxuryRevealTransition, revealViewport } from '../../../lib/animation';
 import Section from '../../../layouts/Section';
 import AnimatedCounter from './AnimatedCounter';
 
 type StatItem = (typeof openSourceSection.stats)[number];
 type RepositoryItem = (typeof openSourceSection.repositories)[number];
 
-const technicalEase = [0.22, 1, 0.36, 1] as const;
+const hoverTransition = {
+    duration: 0.46,
+    ease: luxuryEase,
+} as const;
 
 function StatIcon({ icon }: { icon: StatItem['icon'] }) {
     const iconClassName = 'h-5 w-5 text-text-secondary';
@@ -34,11 +38,22 @@ function StatIcon({ icon }: { icon: StatItem['icon'] }) {
     }
 }
 
-function StatisticCard({ stat }: { stat: StatItem }) {
+function StatisticCard({
+    stat,
+    delay,
+}: {
+    stat: StatItem;
+    delay: number;
+}) {
+    const prefersReducedMotion = useReducedMotion();
+
     return (
         <motion.div
-            whileHover={{ y: -4 }}
-            transition={{ duration: 0.38, ease: technicalEase }}
+            whileHover={{ y: -4, transition: hoverTransition }}
+            initial={prefersReducedMotion ? false : { opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={revealViewport}
+            transition={{ ...luxuryRevealTransition, delay }}
             className="border border-border bg-[linear-gradient(180deg,rgba(255,255,255,0.025)_0%,rgba(255,255,255,0.01)_100%)] px-5 py-6 sm:px-6 sm:py-7"
         >
             <StatIcon icon={stat.icon} />
@@ -56,23 +71,34 @@ function StatisticCard({ stat }: { stat: StatItem }) {
     );
 }
 
-function RepositoryCard({ repository }: { repository: RepositoryItem }) {
+function RepositoryCard({
+    repository,
+    delay,
+}: {
+    repository: RepositoryItem;
+    delay: number;
+}) {
+    const prefersReducedMotion = useReducedMotion();
+
     return (
         <motion.a
             href={repository.url}
             target="_blank"
             rel="noreferrer"
-            whileHover={{ y: -4 }}
-            transition={{ duration: 0.38, ease: technicalEase }}
+            whileHover={{ y: -4, transition: hoverTransition }}
+            initial={prefersReducedMotion ? false : { opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={revealViewport}
+            transition={{ ...luxuryRevealTransition, delay }}
             className="group flex min-h-56 flex-col border border-border px-5 py-6 sm:min-h-64 sm:px-6 sm:py-7"
         >
             <div className="flex items-start justify-between gap-6">
                 <h3 className="font-space text-[1.25rem] tracking-tight text-text sm:text-[1.45rem]">
                     {repository.name}
                 </h3>
-                <span className="flex items-center gap-2 font-space text-xs tracking-wide text-text-secondary sm:text-sm">
-                    <Star className="h-4 w-4 transition-colors duration-300 lg:group-hover:text-text" />
-                    {repository.stars}
+                    <span className="flex items-center gap-2 font-space text-xs tracking-wide text-text-secondary sm:text-sm">
+                        <Star className="h-4 w-4 transition-colors duration-300 lg:group-hover:text-text" />
+                        {repository.stars}
                 </span>
             </div>
             <p className="mt-6 max-w-[30ch] font-sans text-base leading-relaxed tracking-tight text-text-secondary sm:mt-8 sm:text-[1.08rem]">
@@ -119,8 +145,8 @@ export default function ContributionSection() {
         >
             <div className="mt-8 sm:mt-10">
                 <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-                    {openSourceSection.stats.map((stat) => (
-                        <StatisticCard key={stat.label} stat={stat} />
+                    {openSourceSection.stats.map((stat, index) => (
+                        <StatisticCard key={stat.label} stat={stat} delay={index * 0.1} />
                     ))}
                 </div>
 
@@ -136,8 +162,12 @@ export default function ContributionSection() {
                 </div>
 
                 <div className="mt-6 grid gap-4 md:grid-cols-2 lg:mt-8 lg:grid-cols-3 lg:gap-5">
-                    {openSourceSection.repositories.map((repository) => (
-                        <RepositoryCard key={repository.name} repository={repository} />
+                    {openSourceSection.repositories.map((repository, index) => (
+                        <RepositoryCard
+                            key={repository.name}
+                            repository={repository}
+                            delay={index * 0.1}
+                        />
                     ))}
                 </div>
             </div>

@@ -160,6 +160,7 @@ export default function WorkSection() {
                             year={work.year}
                             img={work.image}
                             link={work.link}
+                            revealDelay={index * 0.1}
                             isActive={isDesktopPreview && activeIndex === index}
                             onPreviewEnter={(event) => handlePreviewEnter(work, index, event)}
                             onPreviewMove={handlePreviewMove}

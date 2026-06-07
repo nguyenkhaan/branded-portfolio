@@ -1,15 +1,46 @@
+import { motion, useReducedMotion } from 'framer-motion';
+
+import { luxuryRevealTransition, revealViewport } from '../../../lib/animation';
 import { customerStyling } from "../../../styles/styles"
 
 export default function InternalMonoSection() {
-    return (
-        <section className={`${customerStyling.sectionWrapper} flex min-h-0 flex-col items-center justify-center gap-6 py-8 sm:gap-8 lg:min-h-100`}>
-            <h3 className="text-center font-space text-xs tracking-[0.18em] text-text-secondary uppercase sm:text-sm">internal monologue</h3>
-            <h1 className="px-2 text-center font-syne text-[2rem] font-bold italic tracking-tight text-primary sm:px-8 sm:text-[2.75rem] lg:px-20 lg:text-5xl">
-                "Detach faster. The creative process is an exercise in letting go of your first five ideas to find the sixth that actually matters.”
-            </h1>
-            <div className="h-12 w-0.5 rounded-md bg-text-secondary sm:h-16">
+    const prefersReducedMotion = useReducedMotion();
 
-            </div>
-        </section>
+    return (
+        <motion.section
+            initial={prefersReducedMotion ? false : { opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={revealViewport}
+            transition={luxuryRevealTransition}
+            className={`${customerStyling.sectionWrapper} flex min-h-0 flex-col items-center justify-center gap-6 py-8 sm:gap-8 lg:min-h-100`}
+        >
+            <motion.h3
+                initial={prefersReducedMotion ? false : { opacity: 0, y: 18 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={revealViewport}
+                transition={{ ...luxuryRevealTransition, delay: 0.08 }}
+                className="text-center font-space text-xs tracking-[0.18em] text-text-secondary uppercase sm:text-sm"
+            >
+                internal monologue
+            </motion.h3>
+            <motion.h1
+                initial={prefersReducedMotion ? false : { opacity: 0, y: 18 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={revealViewport}
+                transition={{ ...luxuryRevealTransition, delay: 0.18 }}
+                className="px-2 text-center font-syne text-[2rem] font-bold italic tracking-tight text-primary sm:px-8 sm:text-[2.75rem] lg:px-20 lg:text-5xl"
+            >
+                "Detach faster. The creative process is an exercise in letting go of your first five ideas to find the sixth that actually matters.”
+            </motion.h1>
+            <motion.div
+                initial={prefersReducedMotion ? false : { opacity: 0, scaleY: 0 }}
+                whileInView={{ opacity: 1, scaleY: 1 }}
+                viewport={revealViewport}
+                transition={{ ...luxuryRevealTransition, delay: 0.28 }}
+                className="h-12 w-0.5 origin-top rounded-md bg-text-secondary sm:h-16"
+            >
+
+            </motion.div>
+        </motion.section>
     )
 }

@@ -1,18 +1,56 @@
+import { motion, useInView, useReducedMotion } from 'framer-motion';
 import type { ReactNode } from "react";
+import { useRef } from 'react';
 import { customerStyling } from "../styles/styles";
+import { luxuryRevealTransition } from '../lib/animation';
 
 export default function Section({
     header , children 
 } : {header : ReactNode , children : ReactNode}) 
 {
+    const ref = useRef<HTMLElement | null>(null);
+    const isInView = useInView(ref, {
+        once: true,
+        amount: 0.15,
+    });
+    const prefersReducedMotion = useReducedMotion();
+
     return (
-        <section className = {`${customerStyling.sectionWrapper} min-h-0 lg:min-h-100`}>
-            <div className="w-full">
+        <motion.section
+            ref={ref}
+            initial={prefersReducedMotion ? false : { opacity: 0, y: 30 }}
+            animate={
+                prefersReducedMotion || isInView
+                    ? { opacity: 1, y: 0 }
+                    : { opacity: 0, y: 30 }
+            }
+            transition={luxuryRevealTransition}
+            className = {`${customerStyling.sectionWrapper} min-h-0 lg:min-h-100`}
+        >
+            <motion.div
+                initial={prefersReducedMotion ? false : { opacity: 0, y: 18 }}
+                animate={
+                    prefersReducedMotion || isInView
+                        ? { opacity: 1, y: 0 }
+                        : { opacity: 0, y: 18 }
+                }
+                transition={{ ...luxuryRevealTransition, delay: 0.04 }}
+                className="w-full"
+            >
                 {header}
-            </div> 
-            <div className="mt-4 sm:mt-5 lg:mt-6">
+            </motion.div> 
+            <motion.div
+                initial={prefersReducedMotion ? false : { opacity: 0, y: 18 }}
+                animate={
+                    prefersReducedMotion || isInView
+                        ? { opacity: 1, y: 0 }
+                        : { opacity: 0, y: 18 }
+                }
+                transition={{ ...luxuryRevealTransition, delay: 0.14 }}
+                className="mt-4 sm:mt-5 lg:mt-6"
+            >
                 {children}
-            </div>
-        </section>
+            </motion.div>
+        </motion.section>
     )
 }

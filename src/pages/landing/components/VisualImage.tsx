@@ -1,10 +1,24 @@
+import { motion, useReducedMotion } from 'framer-motion';
+
+import { luxuryRevealTransition, revealViewport } from '../../../lib/animation';
+
 export default function VisualCard({
-    url 
+    url,
+    delay = 0,
 } : { 
-    url : string 
+    url : string
+    delay?: number;
 }) {
+    const prefersReducedMotion = useReducedMotion();
+
     return (
-        <div className='group relative aspect-[4/5] w-full overflow-hidden cursor-pointer'>
+        <motion.div
+            initial={prefersReducedMotion ? false : { opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={revealViewport}
+            transition={{ ...luxuryRevealTransition, delay }}
+            className='group relative aspect-[4/5] w-full cursor-pointer overflow-hidden'
+        >
             <img
                 src={url}
                 className='h-full w-full object-cover transition-all duration-700 lg:grayscale lg:group-hover:scale-110 lg:group-hover:grayscale-0'
@@ -15,6 +29,6 @@ export default function VisualCard({
                 <p className='font-space text-xs tracking-wider text-text-secondary'>Dreamspace</p>
                 <p className='font-syne text-base font-semibold tracking-wider text-text sm:text-lg'>Mono</p>
             </div>
-        </div>
+        </motion.div>
     )
 }

@@ -2,6 +2,7 @@ import type { PointerEvent } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 
 import AnimatedArrow from './AnimatedArrow';
+import { luxuryRevealTransition, revealViewport } from '../../../lib/animation';
 
 interface WorkItemProps {
     name: string;
@@ -10,6 +11,7 @@ interface WorkItemProps {
     img: string;
     link: string;
     index: number;
+    revealDelay: number;
     isActive: boolean;
     onPreviewEnter: (event: PointerEvent<HTMLAnchorElement>) => void;
     onPreviewMove: (event: PointerEvent<HTMLAnchorElement>) => void;
@@ -29,6 +31,7 @@ export default function WorkItem({
     img,
     link,
     index,
+    revealDelay,
     isActive,
     onPreviewEnter,
     onPreviewMove,
@@ -42,6 +45,10 @@ export default function WorkItem({
             href={link}
             target="_blank"
             rel="noreferrer"
+            initial={prefersReducedMotion ? false : { opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={revealViewport}
+            transition={{ ...luxuryRevealTransition, delay: revealDelay }}
             onPointerEnter={onPreviewEnter}
             onPointerMove={onPreviewMove}
             onPointerLeave={onPreviewLeave}

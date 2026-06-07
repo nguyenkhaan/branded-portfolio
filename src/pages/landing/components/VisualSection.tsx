@@ -28,16 +28,16 @@ export default function VisualSection() {
         >
             <div className="mt-10 grid grid-cols-1 gap-4 sm:mt-12 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6">
                 <div className="flex flex-col gap-4 sm:gap-5 lg:gap-6">
-                    <VisualCard url={v1} />
-                    <VisualCard url={v2} />
+                    <VisualCard url={v1} delay={0} />
+                    <VisualCard url={v2} delay={0.1} />
                 </div>
                 <div className="flex flex-col gap-4 sm:gap-5 lg:gap-6">
-                    <VisualCard url={v3} />
-                    <VisualCard url={v4} />
+                    <VisualCard url={v3} delay={0.2} />
+                    <VisualCard url={v4} delay={0.3} />
                 </div>
                 <div className="flex flex-col gap-4 sm:gap-5 lg:gap-6 sm:col-span-2 lg:col-span-1">
-                    <VisualCard url={v5} />
-                    <VisualCard url={v6} />
+                    <VisualCard url={v5} delay={0.4} />
+                    <VisualCard url={v6} delay={0.5} />
                 </div>
             </div>
         </Section>
