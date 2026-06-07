@@ -2,6 +2,7 @@ import './App.css';
 import Navbar from './components/Navbar';
 import Marquee from './pages/landing/components/Marquee';
 import HeroSection from './pages/landing/components/HeroSection';
+import LandingPage from './pages/landing/page';
 
 function App() {
     return (
@@ -11,6 +12,7 @@ function App() {
                 <HeroSection />
                 <Marquee />
             </main>
+            <LandingPage /> 
         </>
     );
 }
