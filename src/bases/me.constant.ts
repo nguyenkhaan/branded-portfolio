@@ -165,3 +165,22 @@ export const openSourceSection = {
         },
     ],
 } as const;
+
+export const contacts = [
+    {
+        name: 'github',
+        link: 'https://github.com',
+    },
+    {
+        name: 'linkedln',
+        link: 'https://github.com',
+    },
+    {
+        name: 'facebook',
+        link: 'https://github.com',
+    },
+    {
+        name: 'read cv',
+        link: 'https://github.com',
+    },
+];

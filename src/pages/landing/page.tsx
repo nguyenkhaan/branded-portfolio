@@ -1,4 +1,5 @@
 import ContributionSection from './components/ContributionSection';
+import InternalMonoSection from './components/MonoLogueSection';
 import TechSection from './components/TechSection';
 import VisualSection from './components/VisualSection';
 import WorkSection from './components/WorkSection';
@@ -11,6 +12,7 @@ export default function LandingPage() {
             <WorkSection /> 
             <TechSection /> 
             <ContributionSection /> 
+            <InternalMonoSection /> 
         </div>
     );
 }

@@ -3,6 +3,7 @@ import Navbar from './components/Navbar';
 import Marquee from './pages/landing/components/Marquee';
 import HeroSection from './pages/landing/components/HeroSection';
 import LandingPage from './pages/landing/page';
+import Footer from './components/Footer';
 
 function App() {
     return (
@@ -13,6 +14,7 @@ function App() {
                 <Marquee />
             </main>
             <LandingPage /> 
+            <Footer /> 
         </>
     );
 }

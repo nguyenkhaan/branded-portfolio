@@ -10,7 +10,7 @@ export default function Navbar()
     const [selectedLabel, setSelectedLabel] = useState<(typeof navbarLabels)[number]>("Home")
 
     return (
-        <div className="w-full absolute top-0 left-0 right-0 bg-background/80 border-b-3 h-24 flex items-center justify-center border-b-border">
+        <nav className="w-full absolute top-0 left-0 right-0 bg-background/80 border-b-3 h-24 flex items-center justify-center border-b-border">
             <div className={`${customerStyling.sectionWrapper} flex items-center justify-between`}>
                 <h1 className="tracking-tighter font-syne text-3xl font-bold text-text">
                     DIGITAL ARTISAN 
@@ -27,6 +27,6 @@ export default function Navbar()
                 </div>
                 <Button></Button>
             </div>
-        </div>
+        </nav>
     )
 }
