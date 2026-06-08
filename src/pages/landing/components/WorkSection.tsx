@@ -103,6 +103,7 @@ export default function WorkSection() {
 
     return (
         <Section
+            id={'work'}
             header={
                 <div className="flex w-full flex-col gap-4 border-b border-b-border py-6 sm:py-7 lg:flex-row lg:items-center lg:justify-between lg:py-8">
                     <SectionHeading>Selected Work</SectionHeading>
@@ -110,10 +111,12 @@ export default function WorkSection() {
                         <span className="text-text-secondary">
                             [ 3 PROJECT ARCHIVED ]
                         </span>
-                        <span className="group inline-flex min-h-11 items-center text-text font-semibold">
-                            VIEW FULL ARCHIVE
-                            <AnimatedArrow className="inline ml-2 cursor-pointer" />
-                        </span>
+                        <a href='https://github.com/nguyenkhaan?tab=repositories' target='_blank'>
+                            <span className="group inline-flex min-h-11 items-center text-text font-semibold">
+                                VIEW FULL ARCHIVE
+                                <AnimatedArrow className="inline ml-2 cursor-pointer" />
+                            </span>
+                        </a>
                     </p>
                 </div>
             }

@@ -1,5 +1,6 @@
 import './App.css';
 import DustCursor from './components/DustCursor';
+import FloatingSoundButton from './components/FloatingSoundButton';
 import Navbar from './components/Navbar';
 import SmoothScroll from './components/SmoothScroll';
 import Marquee from './pages/landing/components/Marquee';
@@ -12,6 +13,7 @@ function App() {
         <div className="overflow-x-clip">
             <DustCursor />
             <Navbar />
+            <FloatingSoundButton />
             <SmoothScroll>
                 <main className="pt-36 sm:pt-40 lg:pt-24">
                     <HeroSection />

@@ -2,14 +2,14 @@
 import jobportal from '../assets/work/jobportal.jpeg';
 import rainyword from '../assets/work/rainywordcoder.png';
 import portfolio from '../assets/work/portfolio.png';
-
+import dtit from '../assets/work/dtit.png'
 export const works = [
     {
-        name: 'My Job',
-        description: 'Job Portal Website',
+        name: 'Cloudian The Dev',
+        description: 'Personal Portfolio',
         year: 2026,
-        image: jobportal,
-        link: 'http://localhost:3000',
+        image: portfolio,
+        link: 'https://me.cloudian.io.vn',
     },
     {
         name: 'Rainy Word Adventure',
@@ -19,14 +19,21 @@ export const works = [
         link: 'https://rainywords.uit.edu.vn/hcm-linhxuan',
     },
     {
-        name: 'Cloudian',
-        description: 'Personal Portfolio',
+        name: 'ĐTIT 2026',
+        description: 'Competition Portal',
         year: 2026,
-        image: portfolio,
-        link: 'http://localhost:3000',
+        image: dtit,
+        link: 'https://dtit2026.bhtcnpm.com/',
+    },
+    {
+        name: 'My Job',
+        description: 'Job Portal Service',
+        year: 2026,
+        image: jobportal,
+        link: 'https://github.com/nguyenkhaan/JobPortalBE',
     },
 ];
-
+import sound from '../assets/sound.mp3'
 export const technologies = [
     // Programming Languages
     {
@@ -102,67 +109,67 @@ export const technologies = [
         icon: 'colab',
     },
 ];
-export const CONTACT_EMAIL : string = 'mailto:nguyenkhaan2006@gmail.com'
+export const CONTACT_EMAIL: string = 'mailto:nguyenkhaan2006@gmail.com';
 
 export const openSourceSection = {
     eyebrow: 'Open Source',
     title: 'Building in Public',
     githubLabel: 'View GitHub Profile',
-    githubUrl: 'https://github.com/',
+    githubUrl: 'https://github.com/nguyenkhaan',
     featuredRepositoriesLabel: 'Featured Repositories',
     stats: [
         {
             icon: 'repositories',
-            value: 10,
+            value: 50,
             suffix: '+',
             label: 'Repositories',
         },
         {
             icon: 'stars',
-            value: 50,
+            value: 10,
             suffix: '+',
             label: 'Stars Earned',
         },
         {
             icon: 'forks',
-            value: 15,
+            value: 10,
             suffix: '+',
             label: 'Forks',
         },
         {
             icon: 'contributions',
-            value: 500,
+            value: 1500,
             suffix: '+',
-            label: 'Contributions',
+            label: 'Commits',
         },
     ],
     repositories: [
         {
-            name: 'habitquest',
+            name: 'JobPortalBE',
             description:
-                'Gamified habit tracker with social squads, boss battles & achievements.',
-            stars: 25,
+                'A job portal connecting employers with qualified candidates and helping job seekers discover career opportunities.',
+            stars: 5,
+            language: 'Java',
+            languageColor: '#b07219',
+            url: 'https://github.com/nguyenkhaan/JobPortalBE',
+        },
+        {
+            name: 'BookstoreBE',
+            description:
+                'A bookstore management platform that helps companies manage book inventory, categories, orders, customers, and sales operations efficiently.',
+            stars: 8,
             language: 'TypeScript',
             languageColor: '#3b82f6',
             url: 'https://github.com/',
         },
         {
-            name: 'emoji-kit',
+            name: '-HomedAI-',
             description:
-                'Premium animated emoji library for React applications with smooth framer-motion interactions.',
-            stars: 15,
-            language: 'TypeScript',
-            languageColor: '#3b82f6',
-            url: 'https://github.com/',
-        },
-        {
-            name: 'insta-p8',
-            description:
-                'Open source platform architecture and modular implementation patterns.',
-            stars: 32,
-            language: 'TypeScript',
-            languageColor: '#3b82f6',
-            url: 'https://github.com/',
+                'An open-source healthcare platform designed to support personal and family health management.',
+            stars: 10,
+            language: 'Python',
+            languageColor: '#3572A5',
+            url: 'https://github.com/nguyenkhaan/-HomeMedAI-',
         },
     ],
 } as const;
@@ -170,18 +177,20 @@ export const openSourceSection = {
 export const contacts = [
     {
         name: 'github',
-        link: 'https://github.com',
+        link: 'https://github.com/nguyenkhaan',
     },
     {
         name: 'linkedln',
-        link: 'https://github.com',
+        link: 'https://www.linkedin.com/in/kha-nguyen-10515120b/',
     },
     {
         name: 'facebook',
-        link: 'https://github.com',
+        link: 'https://www.facebook.com/kha.an.907155?locale=vi_VN',
     },
     {
         name: 'read cv',
-        link: 'https://github.com',
+        link: 'https://drive.google.com/file/d/1bNODeFiAk1-YuFQ_m7PBQVgy6nIbR2M9/view?usp=sharing',
     },
 ];
+
+export const portfolioBackgroundTrackUrl = sound 

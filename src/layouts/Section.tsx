@@ -5,8 +5,8 @@ import { customerStyling } from "../styles/styles";
 import { luxuryRevealTransition } from '../lib/animation';
 
 export default function Section({
-    header , children 
-} : {header : ReactNode , children : ReactNode}) 
+    header , children , id = ''
+} : {header : ReactNode , id : string ; children : ReactNode}) 
 {
     const ref = useRef<HTMLElement | null>(null);
     const isInView = useInView(ref, {
@@ -17,6 +17,7 @@ export default function Section({
 
     return (
         <motion.section
+            id = {id}
             ref={ref}
             initial={prefersReducedMotion ? false : { opacity: 0, y: 30 }}
             animate={

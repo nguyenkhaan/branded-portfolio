@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import type { MouseEvent } from 'react';
 
 const technicalEase = [0.16, 1, 0.3, 1] as const;
 const indicatorTransition = {
@@ -24,10 +25,35 @@ export default function NavbarLabel({
     isSelected = false,
     onClick,
 }: TextProps) {
+    const handleClick = (event: MouseEvent<HTMLAnchorElement>) => {
+        onClick?.();
+
+        const targetSection = document.getElementById(text);
+
+        if (!targetSection) {
+            return;
+        }
+
+        event.preventDefault();
+
+        const prefersReducedMotion =
+            typeof window !== 'undefined' &&
+            window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        targetSection.scrollIntoView({
+            behavior: prefersReducedMotion ? 'auto' : 'smooth',
+            block: 'start',
+        });
+
+        if (typeof window !== 'undefined') {
+            window.history.replaceState(null, '', `#${text}`);
+        }
+    };
+
     return (
-        <motion.button
-            type="button"
-            onClick={onClick}
+        <motion.a
+            href={`#${text}`}
+            onClick={handleClick}
             whileHover={{ y: -0.5 }}
             transition={hoverTransition}
             className="relative inline-flex min-h-11 items-center justify-center px-1 pr-2 text-sm font-medium tracking-wide uppercase cursor-pointer font-syne sm:text-base"
@@ -40,8 +66,7 @@ export default function NavbarLabel({
                         bg-[radial-gradient(circle,rgba(255,255,255,0.9)_0%,rgba(255,255,255,0.4)_25%,rgba(255,255,255,0.15)_50%,transparent_75%)]"
                 />
             )}
-            <motion.a
-                href={`#${text}`}
+            <motion.span
                 animate={{
                     color: isSelected ? '#ffffff' : '#a1a1a1',
                     opacity: isSelected ? 1 : 0.8,
@@ -49,7 +74,7 @@ export default function NavbarLabel({
                 transition={textTransition}
             >
                 {text}
-            </motion.a>
-        </motion.button>
+            </motion.span>
+        </motion.a>
     );
 }

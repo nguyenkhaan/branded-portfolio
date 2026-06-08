@@ -21,7 +21,7 @@ export default function InternalMonoSection() {
                 transition={{ ...luxuryRevealTransition, delay: 0.08 }}
                 className="text-center font-space text-xs tracking-[0.18em] text-text-secondary uppercase sm:text-sm"
             >
-                internal monologue
+                coder in white - coding in red
             </motion.h3>
             <motion.h1
                 initial={prefersReducedMotion ? false : { opacity: 0, y: 18 }}
@@ -30,7 +30,7 @@ export default function InternalMonoSection() {
                 transition={{ ...luxuryRevealTransition, delay: 0.18 }}
                 className="px-2 text-center font-syne text-[2rem] font-bold italic tracking-tight text-primary sm:px-8 sm:text-[2.75rem] lg:px-20 lg:text-5xl"
             >
-                "Detach faster. The creative process is an exercise in letting go of your first five ideas to find the sixth that actually matters.”
+                "No man can win every battle, but no man should fall without a struggle”
             </motion.h1>
             <motion.div
                 initial={prefersReducedMotion ? false : { opacity: 0, scaleY: 0 }}

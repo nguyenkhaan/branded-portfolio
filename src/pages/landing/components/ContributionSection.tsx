@@ -121,6 +121,7 @@ function RepositoryCard({
 export default function ContributionSection() {
     return (
         <Section
+            id = {'contributions'}
             header={
                 <div className="flex flex-col gap-8 lg:flex-row lg:items-start lg:justify-between">
                     <div>

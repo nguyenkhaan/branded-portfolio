@@ -5,6 +5,7 @@ import TechItem from "./TechItem";
 export default function TechSection() {
     return (
         <Section
+            id={'tech'}
             header = {
                 <div className="flex w-full flex-col gap-4 text-center sm:gap-5 lg:gap-6">
                     <span className="font-space text-xs font-semibold tracking-[0.18em] text-text-secondary uppercase sm:text-sm">Technologies I work with</span>
