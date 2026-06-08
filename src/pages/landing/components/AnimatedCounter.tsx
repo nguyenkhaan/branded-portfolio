@@ -36,13 +36,11 @@ export default function AnimatedCounter({
     useEffect(() => {
         if (!isInView) {
             motionValue.set(0);
-            setDisplayValue(0);
             return;
         }
 
         if (prefersReducedMotion) {
             motionValue.set(value);
-            setDisplayValue(value);
             return;
         }
 

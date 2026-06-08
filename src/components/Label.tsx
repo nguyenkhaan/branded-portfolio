@@ -40,7 +40,8 @@ export default function NavbarLabel({
                         bg-[radial-gradient(circle,rgba(255,255,255,0.9)_0%,rgba(255,255,255,0.4)_25%,rgba(255,255,255,0.15)_50%,transparent_75%)]"
                 />
             )}
-            <motion.span
+            <motion.a
+                href={`#${text}`}
                 animate={{
                     color: isSelected ? '#ffffff' : '#a1a1a1',
                     opacity: isSelected ? 1 : 0.8,
@@ -48,7 +49,7 @@ export default function NavbarLabel({
                 transition={textTransition}
             >
                 {text}
-            </motion.span>
+            </motion.a>
         </motion.button>
     );
 }

@@ -102,6 +102,7 @@ export const technologies = [
         icon: 'colab',
     },
 ];
+export const CONTACT_EMAIL : string = 'mailto:nguyenkhaan2006@gmail.com'
 
 export const openSourceSection = {
     eyebrow: 'Open Source',
